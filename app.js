@@ -2,7 +2,9 @@ var express = require('express');
 var app = express();
 var db = require('./mongodb');
 
-var TimeKeepRoute = require('./app/routes/TimeKeepRoute');
+var RepairRoute = require('./app/routes/RepairRoute');
+var DeviceRoute = require('./app/routes/DeviceRoute');
+var CustomerRoute = require('./app/routes/CustomerRoute');
 
 app.use('/*',function(req, res, next) {
 
@@ -18,8 +20,9 @@ app.use('/*',function(req, res, next) {
 
 });
 
-app.use('/timekeep', TimeKeepRoute);
-
+app.use('/repair', RepairRoute);
+app.use('/device', DeviceRoute);
+app.use('/customer', CustomerRoute);
 
 app.use(function (req, res) {
     res.status(404).send({
