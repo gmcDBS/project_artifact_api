@@ -2,7 +2,8 @@
 var Repair = require('../models/Repair');
 
 exports.getTest = function (req, res) {
-        res.status(200).send("It works!");
+        var name = req.query.name || "Bruce";
+        res.status(200).send("It works, " + name + "!");
 }
 
 exports.getRepairs = function (req, res) {

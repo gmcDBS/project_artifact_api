@@ -2,7 +2,8 @@
 var Customer = require('../models/Customer');
 
 exports.getTest = function (req, res) {
-    res.status(200).send("It works!");
+        var name = req.query.name || "Tony";
+        res.status(200).send("It works, " + name + "!");
 }
 
 exports.getCustomers = function (req, res) {

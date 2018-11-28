@@ -2,7 +2,8 @@
 var Device = require('../models/Device');
 
 exports.getTest = function (req, res) {
-        res.status(200).send("It works!");
+        var name = req.query.name || "Steve";
+        res.status(200).send("It works, " + name + "!");
 }
 
 exports.getDevices = function (req, res) {
@@ -42,4 +43,30 @@ exports.removeDevice = function (req, res) {
             res.status(200).send(device);
         });
 }
+
+app.put('/api/:company', function (req, res) {
+    var company = req.company;
+
+    company = _.extend(company, req.body);
+
+    company.save(function(err) {
+    if (err) {
+        return res.send('/company', {
+            errors: err.errors,
+            company: company
+        });
+    } else {
+        res.jsonp(company);
+    }
+
+});
+
+.delete( function (req, res) {     // <===== defined inside 'put',
+        User.remove({
+            _id: req.params.user_id
+        }, function (err, user) {
+            if (err) return res.send(err);
+            res.json({ message: 'Deleted' });
+        });
+    });
 */
