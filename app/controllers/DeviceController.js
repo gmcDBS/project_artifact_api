@@ -2,8 +2,8 @@
 var Device = require('../models/Device');
 
 exports.getTest = function (req, res) {
-        var name = req.query.name || "Steve";
-        res.status(200).send("It works, " + name + "!");
+    var name = req.query.name || "Steve";
+    res.status(200).send("It works, " + name + "!");
 }
 
 exports.getDevices = function (req, res) {
@@ -15,7 +15,11 @@ exports.getDevices = function (req, res) {
 
 exports.createDevice = function (req, res) {
     Device.create({
-            deviceId: req.body.deviceId
+            deviceId: req.body.deviceId,
+            deviceImage: req.body.deviceImage,
+            deviceType: req.body.deviceType,
+            deviceModel: req.body.deviceModel,
+            deviceBrand: req.body.deviceBrand,
         },
         function (err, device) {
             if (err) return res.status(500).send("problem POST Device.");

@@ -2,8 +2,8 @@
 var Customer = require('../models/Customer');
 
 exports.getTest = function (req, res) {
-        var name = req.query.name || "Tony";
-        res.status(200).send("It works, " + name + "!");
+    var name = req.query.name || "Tony";
+    res.status(200).send("It works, " + name + "!");
 }
 
 exports.getCustomers = function (req, res) {
@@ -15,7 +15,10 @@ exports.getCustomers = function (req, res) {
 
 exports.createCustomer = function (req, res) {
     Customer.create({
-            customerId: req.body.customerId
+            customerId: req.body.customerId,
+            customerName: req.body.customerName,
+            customerAddress: req.body.customerAddress,
+            customerContact: req.body.customerContact
         },
         function (err, customer) {
             if (err) return res.status(500).send("problem POST Customer.");

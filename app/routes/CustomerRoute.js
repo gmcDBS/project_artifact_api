@@ -8,9 +8,9 @@ var customerController = require('../controllers/CustomerController');
 router.get('/test', customerController.getTest);
 
 router.get('/', customerController.getCustomers);
-//router.get('/', customerController.getCustomer);
+//router.get('/:customerId', customerController.getCustomer);
 router.post('/', customerController.createCustomer);
-//router.put('/', customerController.updateCustomer);
-//router.delete('/', customerController.removeCustomer);
+//router.put('/:customerId', customerController.updateCustomer);
+//router.delete('/:customerId', customerController.removeCustomer);
 
 module.exports = router;
