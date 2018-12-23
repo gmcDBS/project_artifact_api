@@ -7,14 +7,13 @@ exports.getTest = (req, res) => {
 }
 
 exports.getRepairs = (req, res) => {
-    Repair.find({}, function (err, repairs) {
-        if (err) return res.status(500).send("problem GET Repairs.");
-        res.status(200).send(repairs);
-    });
+    Repair.find().populate('device').then(repairs => {
+        res.send(repairs);
+    })
 }
 
 exports.getRepair = function (req, res) {
-    Repair.findById(req.params._id).then(repair => {
+    Repair.findById(req.params._id).populate('device').then(repair => {
         if (!repair) {
             return res.status(404).send({
                 message: "Repair not found with id " + req.params._id
@@ -28,13 +27,15 @@ exports.createRepair = (req, res) => {
     var {
         repairId,
         repairType,
-        repairStatus
+        repairStatus,
+        device
     } = req.body;
     
     Repair.create({
             repairId,
             repairType,
-            repairStatus
+            repairStatus,
+            device
         },
         function (err, repair) {
             if (err) return res.status(500).send("problem POST Repair.");

@@ -3,8 +3,10 @@ var DeviceSchema = new mongoose.Schema({
     deviceId: String,
     deviceImage: String,
     deviceType: String,
-    deviceModel: String,
-    deviceBrand: String
+    deviceBrand: String,
+    deviceModel: String
+}, {
+    timestamps: true
 });
 mongoose.model('Device', DeviceSchema);
 module.exports = mongoose.model('Device');
