@@ -47,13 +47,15 @@ exports.updateRepair = (req, res) => {
     var {
         repairId,
         repairType,
-        repairStatus
+        repairStatus,
+		device
     } = req.body;
 
     Repair.findByIdAndUpdate(req.params._id, {
         repairId,
         repairType,
-        repairStatus
+        repairStatus,
+		device
     }, {
         new: true
     }).then(repair => {
