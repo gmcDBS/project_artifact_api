@@ -8,9 +8,9 @@ var repairController = require('../controllers/RepairController');
 router.get('/test', repairController.getTest);
 
 router.get('/', repairController.getRepairs);
-//router.get('/', repairController.getRepair);
+router.get('/:_id', repairController.getRepair);
 router.post('/', repairController.createRepair);
-//router.put('/', repairController.updateRepair);
-//router.delete('/', repairController.removeRepair);
+router.put('/:_id', repairController.updateRepair);
+router.delete('/:_id', repairController.removeRepair);
 
 module.exports = router;

@@ -1,2 +1,2 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/microgate');
+mongoose.connect('mongodb://localhost/dbs-dev');

@@ -8,9 +8,9 @@ var deviceController = require('../controllers/DeviceController');
 router.get('/test', deviceController.getTest);
 
 router.get('/', deviceController.getDevices);
-//router.get('/', deviceController.getDevice);
+router.get('/:_id', deviceController.getDevice);
 router.post('/', deviceController.createDevice);
-//router.put('/', deviceController.updateDevice);
-//router.delete('/', deviceController.removeDevice);
+router.put('/:_id', deviceController.updateDevice);
+router.delete('/:_id', deviceController.removeDevice);
 
 module.exports = router;
